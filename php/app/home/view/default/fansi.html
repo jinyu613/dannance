@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<head>
+   <meta charset="utf-8">
+   <title>{$site_name}</title>
+   <meta name="keywords" content="{$site_seo_keywords}" />
+   <meta name="description" content="{$site_seo_description}">
+   {include file="public:head" /}
+</head>
+<body class="fansi">
+	<!-- 导航 S -->
+<div class="warp ">
+    <div class="nav">
+        <ul class=" clearfix">
+            <li class="fl m">
+                <h3><a href="/">网站首页</a></h3>
+            </li>
+            {volist name="nav" id="vo" key="k"}
+            <li class="fl m {if $id == $vo['id']}on{/if}">
+                <h3><a href="{if $vo['menu_address']}{$vo.menu_address}{else /} {:url('index/lists',['id'=>$vo.id])} {/if}">{$vo.menu_name}</a></h3>
+            </li>
+            {/volist}
+        </ul>
+        <div class="fr" id="showtimes"></div>
+    </div>
+</div>
+<script type="text/javascript"> jQuery(".nav").slide({ type:"menu",  titCell:".m", targetCell:".sub", effect:"slideDown", delayTime:300, triggerTime:100,returnDefault:true  });</script>
+{include file="public:scripts"/}
+<!-- 导航 E -->
+<div class="banner warp">
+	<img src="{$yf_theme_path}public/images/fansi_banner.jpg" alt="" />
+</div>
+<!--main-->
+<div class="warp pt_20">
+   <div class="l-con" style="margin-top: 25px;">
+      <div class="items fl">
+      	{volist name="title" id="vo" key="ko"}
+			{if $ko === 1 }
+			<h3><span class="fB">{$vo.menu_name}</span><a href="{:url('index/lists',['id'=>$vo.id])}" class="fr">更多</a></h3>
+			<ul>
+			{foreach $vo["xia"] as $k => $v}
+               {if $k < 11}
+                  <li><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+               {/if}
+            {/foreach}
+            </ul>
+			{/if}
+		{/volist}
+      </div>
+      <div class="items fr">
+      	{volist name="title" id="vo" key="ko"}
+			{if $ko === 2 }
+			<h3><span class="fB">{$vo.menu_name}</span><a href="{:url('index/lists',['id'=>$vo.id])}" class="fr">更多</a></h3>
+			<ul>
+			{foreach $vo["xia"] as $k => $v}
+               {if $k < 11}
+                  <li><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+               {/if}
+            {/foreach}
+            </ul>
+			{/if}
+		{/volist}
+      </div>
+   </div>
+   <div class="l-con" style="margin-top: 25px;">
+      <div class="items fl">
+      	{volist name="title" id="vo" key="ko"}
+			{if $ko === 3 }
+			<h3><span class="fB">{$vo.menu_name}</span><a href="{:url('index/lists',['id'=>$vo.id])}" class="fr">更多</a></h3>
+			<ul>
+			{foreach $vo["xia"] as $k => $v}
+               {if $k < 11}
+                  <li><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+               {/if}
+            {/foreach}
+            </ul>
+			{/if}
+		{/volist}
+      </div>
+      <div class="items fr">
+      	{volist name="title" id="vo" key="ko"}
+			{if $ko === 4 }
+			<h3><span class="fB">{$vo.menu_name}</span><a href="{:url('index/lists',['id'=>$vo.id])}" class="fr">更多</a></h3>
+			<ul>
+			{foreach $vo["xia"] as $k => $v}
+               {if $k < 11}
+                  <li><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+               {/if}
+            {/foreach}
+            </ul>
+			{/if}
+		{/volist}
+      </div>
+   </div>
+</div> 
+<!--main end-->
+{include file="public:footer"/}
+</body>
+</html>

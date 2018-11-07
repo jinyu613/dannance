@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>{$site_name}</title>
+    <meta name="keywords" content="{$site_seo_keywords}" />
+    <meta name="description" content="{$site_seo_description}">
+    {include file="public:head" /}
+</head>
+<body>
+{include file="public:nav"/}
+
+<!--news-->
+<div class="warp">
+    <div class="fl r-con">
+		<div class="sidebar mt_20">
+	        <h3 class="p_r t_c"><span>制度汇编总目录 </span></h3>
+	        {volist name="zhidulist" id="vo" key="k"}
+	            <a href="{:url('index/lists',['id'=>$vo['id']])}" class="{if $zhidu_id == $vo['id']}cur{/if}">{$vo.menu_name}</a>
+	        {/volist}
+	    </div>
+	    <div class="sidebar mt_20">
+	        <h3 class="p_r t_c"><span>各部门制度汇编总目录</span></h3>
+	        {volist name="zhidulist2" id="vo" key="k"}
+	            <a href="{:url('index/lists',['id'=>$vo['id']])}" class="{if $zhidu_id == $vo['id']}cur{/if}">{$vo.menu_name}</a>
+	        {/volist}
+	    </div>
+	</div>
+    <div class="fr l-con mt_20">
+        <div class="title">
+            <span class="fl fB">{$list['menu_name']}</span>
+            <div class="fr crumbs">当前位置：<a href="/">首页</a>><a href="{:url('index/lists',['id'=>$list['id']])}">{$list['menu_name']}</a>>{$news.news_title}</div>
+        </div>
+        <div class="view">
+            <h1 class="t_c">{$news.news_title}</h1>
+            <div class="time t_c">发布者：{$news.news_source}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发表时间：{$news.news_time|date='Y-m-d h:s',###}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览量：{$news.news_like}</div>
+            <div class="body">
+                {$news.news_content}
+            </div>
+        </div>
+        <div class="prev">
+
+            {empty name="prev"}
+            <a href="#" class="fl">上一篇 没有了...</a>
+            {else /}
+            <a href="{:url('index/news',['id'=>$prev['n_id']])}" class="fl">上一篇 {$prev.news_title}</a>
+            {/empty}
+            {empty name="next"}
+            <a href="#" class="fl">下一篇 没有了...</a>
+            {else /}
+            <a href="{:url('index/news',['id'=>$next['n_id']])}" class="fr t_r">下一篇 {$next.news_title}</a>
+            {/empty}
+        </div>
+    </div>
+</div>
+<!--news end-->
+
+{include file="public:footer"/}
+</body>
+</html>

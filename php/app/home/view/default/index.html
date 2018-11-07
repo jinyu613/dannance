@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<head>
+   <meta charset="utf-8">
+   <title>{$site_name}</title>
+   <meta name="keywords" content="{$site_seo_keywords}" />
+   <meta name="description" content="{$site_seo_description}">
+   {include file="public:head" /}
+</head>
+<body>
+{include file="public:nav"/}
+
+<!--main-->
+<div class="warp pt_20">
+   <div class="l-con fl">
+      <div class="items fl">
+         <h3><span class="fB">领导讲话</span><a href="{:url('index/lists',['id'=>27])}" class="fr">更多</a></h3>
+         <ul>
+            {volist name="list" id="vo" key="ko"}
+            {if $vo['id'] === 27}
+               {foreach $vo['xia'] as $k => $v}
+               {if $k < 14}
+                  <li data-t="{$v.news_time}"><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+               {/if}
+               {/foreach}
+            {/if}
+            {/volist}
+         </ul>
+      </div>
+      <div class="items fr">
+         <h3><span class="fB">工作动态</span><a href="{:url('index/lists',['id'=>28])}" class="fr">更多</a></h3>
+         <ul>
+            {volist name="list" id="vo" key="ko"}
+            {if $vo['id'] === 28}
+            {foreach $vo['xia'] as $k => $v}
+            {if $k < 14}
+            <li data-t="{$v.news_time}"><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+            {/if}
+            {/foreach}
+            {/if}
+            {/volist}
+         </ul>
+      </div>
+   </div>
+   <div class="r-con fr">
+      <div class="i-box">
+         <a href="{:url('index/contact',['id'=>34])}" class="fl ic1"><em></em>单位简介</a>
+         <a href="{:url('index/contact',['id'=>35])}" class="fl ic2 last"><em></em>机构设置</a>
+         <a href="{:url('index/contact',['id'=>36])}" class="fl ic3"><em></em>企业文化</a>
+         <a href="{:url('index/contact',['id'=>37])}" class="fl ic4 last"><em></em>通讯录</a>
+      </div>
+      <div class="num">
+         <h3 class="t_c fB">安全生产里程碑</h3>
+         {volist name="ad" id="v" key="k"}
+         {if $v['plug_adtype_id'] === 4}
+         <p>连续安全生产: <span data-x="{$v['xia']['plug_ad_content']}" data-t="{$v['xia']['plug_ad_addtime']}" class="fB">0</span>  天</p>
+         {/if}
+         {/volist}
+         <script>
+            $(function(){
+               var newday = Date.parse(new Date());
+               var oldday = $(".num span").attr('data-t') * 1000;
+               var nTime = newday - oldday;
+               var day = Math.floor(nTime/86400000);
+               var xday = $(".num span").attr('data-x');
+                $(".num span").text( parseInt(xday) + day);
+            });
+         </script>
+      </div>
+      <div class="tel-box">
+         <div class="fl fB t_c">
+         	<span>调度室<br>应急电话</span>
+         	<span class="fl fB t_c">热线<br>24小时电话</span>
+         </div>
+         <p class="fB">
+            {volist name="yinji" id="v" key="k"}
+               {$v.plug_ad_content} <br>
+            {/volist}
+            
+            {volist name="rexian" id="v" key="k"}
+               {$v.plug_ad_content} <br>
+            {/volist}
+         </p>
+      </div>
+   </div>
+</div>
+<div class="warp pt_20">
+   {volist name="ad" id="v" key="k"}
+      {if $v['plug_adtype_id'] === 1}
+      <a href="{$v['xia']['plug_ad_url']}" class="fl"><img src="{$v['xia']['plug_ad_pic']}" alt="{$v['xia']['plug_ad_name']}"></a>
+      {/if}
+   {/volist}
+   {volist name="ad" id="v" key="k"}
+   {if $v['plug_adtype_id'] === 2}
+   <a href="{$v['xia']['plug_ad_url']}" class="fr"><img src="{$v['xia']['plug_ad_pic']}" alt="{$v['xia']['plug_ad_name']}"></a>
+   {/if}
+   {/volist}
+</div>
+
+<div class="warp pt_20">
+   <div class="l-con fl">
+      <div class="items fl">
+         <h3><span class="fB">通知公告</span><a href="{:url('index/lists',['id'=>29])}" class="fr">更多</a></h3>
+         <ul>
+            {volist name="list" id="vo" key="ko"}
+            {if $vo['id'] === 29}
+            {foreach $vo['xia'] as $k => $v}
+            {if $k < 9}
+            <li data-t="{$v.news_time}"><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+            {/if}
+            {/foreach}
+            {/if}
+            {/volist}
+         </ul>
+      </div>
+      <div class="items fr">
+         <h3><span class="fB">燃气风采及媒体聚焦</span><a href="{:url('index/lists',['id'=>30])}" class="fr">更多</a></h3>
+         <ul>
+            {volist name="list" id="vo" key="ko"}
+            {if $vo['id'] === 30}
+            {foreach $vo['xia'] as $k => $v}
+            {if $k < 9}
+            <li data-t="{$v.news_time}"><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+            {/if}
+            {/foreach}
+            {/if}
+            {/volist}
+         </ul>
+      </div>
+      <div class="clear"></div>
+      {volist name="ad" id="v" key="k"}
+      {if $v['plug_adtype_id'] === 3}
+      <div class="mt_10 mb_10"><a href="{$v['xia']['plug_ad_url']}"><img src="{$v['xia']['plug_ad_pic']}" alt="{$v['xia']['plug_ad_name']}"></a></div>
+      {/if}
+      {/volist}
+      <div class="items fl">
+         <h3><span class="fB">今日提示</span><a href="{:url('index/lists',['id'=>31])}" class="fr">更多</a></h3>
+         <ul>
+            {volist name="list" id="vo" key="ko"}
+            {if $vo['id'] === 31}
+            {foreach $vo['xia'] as $k => $v}
+            {if $k < 13}
+            <li data-t="{$v.news_time}"><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+            {/if}
+            {/foreach}
+            {/if}
+            {/volist}
+         </ul>
+      </div>
+      <div class="items fr">
+         <h3><span class="fB">会议纪要</span><a href="{:url('index/lists',['id'=>32])}" class="fr">更多</a></h3>
+         <ul>
+            {volist name="list" id="vo" key="ko"}
+            {if $vo['id'] === 32}
+            {foreach $vo['xia'] as $k => $v}
+            {if $k < 13}
+            <li data-t="{$v.news_time}"><a href="{:url('index/news',['id'=>$v.n_id])}" class="fl">{$v.news_title}</a><span class="fr">{$v.news_time|date='y-m-d',###}</span></li>
+            {/if}
+            {/foreach}
+            {/if}
+            {/volist}
+         </ul>
+      </div>
+   </div>
+   <div class="r-con fr">
+      <div class="info p_r">
+         <div class="tit t_c"><span>值班信息</span></div>
+         	<dl>
+         		<dt>值班领导:</dt>
+         		{foreach $zhiban[0] as $k=>$v}
+         		<dd>{$v}</dd>
+         		{/foreach}
+         	</dl>
+         	<dl>
+         		<dt>值班干部:</dt>
+         		{foreach $zhiban[1] as $k=>$v}
+         		<dd>{$v}</dd>
+         		{/foreach}
+         	</dl>
+         	<dl>
+         		<dt>维&nbsp;修&nbsp;班 :</dt>
+         		{foreach $zhiban[2] as $k=>$v}
+         		<dd>{$v}</dd>
+         		{/foreach}
+         	</dl>
+         	<dl>
+         		<dt>稽&nbsp;查&nbsp;班 :</dt>
+         		{foreach $zhiban[3] as $k=>$v}
+         		<dd>{$v}</dd>
+         		{/foreach}
+         	</dl>
+         	<dl>
+         		<dt>驾&nbsp;驶&nbsp;班 :</dt>
+         		{foreach $zhiban[4] as $k=>$v}
+         		<dd>{$v}</dd>
+         		{/foreach}
+         	</dl>
+      </div>
+      <div class="guanli p_r mt_10">
+         <div class="tit t_c"><span>业务管理</span></div>
+         {volist name="guanli" id="vo" key="ko"}
+         <div class="items">
+            <div class="name fl">{$vo.menu_name}</div>
+            <div class="txt">
+               {volist name="$vo['xia']" id="v" key="k"}
+               <a href="{:url('index/lists',['id'=>$v['id']])}">{$v.menu_name}</a>
+               {/volist}
+            </div>
+         </div>
+         {/volist}
+      </div>
+   </div>
+</div>
+<div class="warp">
+   <div class="photo mt_20">
+      <div class="tit">
+      	 <span class="fl t_c on">一线掠影</span>
+         <span class="fl t_c">荣誉展示</span>
+         <a href="{:url('index/lists',['id'=>52])}" class="fr">更多</a>
+         <a style="display: none;" href="{:url('index/lists',['id'=>33])}" class="fr">更多</a>
+      </div>
+      <div class="picScroll p_r">
+         <div class="bd">
+            <ul>
+               {volist name="list" id="vo" key="ko"}
+               {if $vo['id'] === 52}
+               {foreach $vo['xia'] as $k => $v}
+               {if $k < 10}
+               <li class="fl">
+                  <div class="pic">
+                     <a href="{:url('index/news',['id'=>$v.n_id])}"><img src="{$v.news_img}" alt=""></a>
+                  </div>
+                  <div class="txt t_c"><a href="{:url('index/news',['id'=>$v.n_id])}">{$v.news_title}</a></div>
+               </li>
+               {/if}
+               {/foreach}
+               {/if}
+               {/volist}
+            </ul>
+         </div>
+      </div>
+      <div class="picScroll p_r" style="display: none;">
+         <div class="bd">
+            <ul>
+               {volist name="list" id="vo" key="ko"}
+               {if $vo['id'] === 33}
+               {foreach $vo['xia'] as $k => $v}
+               {if $k < 10}
+               <li class="fl">
+                  <div class="pic">
+                     <a href="{:url('index/news',['id'=>$v.n_id])}"><img src="{$v.news_img}" alt=""></a>
+                  </div>
+                  <div class="txt t_c"><a href="{:url('index/news',['id'=>$v.n_id])}">{$v.news_title}</a></div>
+               </li>
+               {/if}
+               {/foreach}
+               {/if}
+               {/volist}
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div class="piao-box">
+   	<p><em>×</em></p>
+   	<a href="{:url('index/lists',['id'=>75])}">
+   		<img src="{$yf_theme_path}public/images/fansi.jpg" alt="" />
+   	</a>
+   </div>
+<script>
+	$(".photo .tit span").click(function(){
+		$(this).addClass('on').siblings().removeClass('on');
+		var i = $(this).index();
+		$(".photo .picScroll").eq(i).show().siblings('.picScroll').hide();
+		$(".tit a").eq(i).show().siblings('a').hide();
+	})
+	$(function(){
+		var l = parseInt($(".piao-box").css('left'));
+		var t = parseInt($(".piao-box").css('top'));
+		var bw = parseInt($(".piao-box").css('width'));
+		var bh = parseInt($(".piao-box").css('height'));
+		var h = $(window).height();
+		var w = $(window).width();
+		function start(){
+			var tr = true;
+			var lr = true;
+			var ho = true;
+			var yidong = setInterval(function(){
+				h = $(window).height();
+			    w = $(window).width();
+				$(".piao-box").hover(function(){
+					ho = false;
+				},function(){
+					ho = true;
+				});
+				if(ho){
+					if(tr){
+						t++;
+					}else{
+						t--;
+					}
+					if(t >= h-bh){
+						tr = false;
+					}
+					if(t <= 0){
+						tr = true;
+					}
+					if(lr){
+						l++;
+					}else{
+						l--;
+					}
+					if(l >= w-bw){
+						lr = false;
+					}
+					if(l <= 0){
+						lr = true;
+					}
+				}
+				$(".piao-box").css({"left":l,"top":t});
+			},20);
+			
+			
+		}
+		start();
+	});
+	$(".piao-box em").click(function(){
+		$(".piao-box").hide();
+	});
+</script>
+   <div class="link mt_20">
+      <div class="tit">
+         <span class="fl t_c on">应用系统</span><span class="fl t_c">友情链接</span>
+      </div>
+      <div class="txt">
+         {volist name="yinyong" id="vo" key="k"}
+         <a href="{$vo.plug_link_url}" target="_blank">{$vo.plug_link_name}</a>
+         {/volist}
+      </div>
+      <div class="txt" style="display: none;">
+         {volist name="link" id="vo" key="k"}
+         <a href="{$vo.plug_link_url}" target="_blank">{$vo.plug_link_name}</a>
+         {/volist}
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+	$(".link .tit span").click(function(){
+		$(this).addClass('on').siblings().removeClass('on');
+		var i = $(this).index();
+		$(".link .txt").eq(i).show().siblings('.txt').hide();
+	})
+    jQuery(".picScroll").slide({mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:5,trigger:"click"});
+    function newsDate(){
+    	var txt = "<em>NEW</em> "
+    	var newday = Date.parse(new Date());
+    	$(".items li").each(function(){
+           var oldday = $(this).attr('data-t') * 1000;
+           var nTime = newday - oldday;
+           if(nTime < 86400000){
+           	$(this).find("a").prepend(txt);
+           };
+       });
+    }
+    $(function(){
+    	newsDate();
+    })
+</script>
+<!--main end-->
+
+{include file="public:footer"/}
+</body>
+</html>

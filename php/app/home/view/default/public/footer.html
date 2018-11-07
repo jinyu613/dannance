@@ -1,0 +1,29 @@
+
+<div class="footer">
+    <div class="warp">
+        <div class="items fl">
+            <h3><a href="/">网站首页</a></h3>
+        </div>
+        {volist name="nav" id="vo" key="k"}
+        <div class="items fl">
+            <h3><a href="{if $vo['menu_address']}{$vo.menu_address}{else /} {:url('index/lists',['id'=>$vo.id])} {/if}">{$vo.menu_name}</a></h3>
+        </div>
+        {/volist}
+
+        <div class="fr qrcode">
+        	<div class="erwma t_c fr">
+                <img src="{$yf_theme_path}public/images/erwma.jpg" alt="中国石油微门户">
+                <p>中国石油微门户</p>
+            </div>
+            <div class="erwma t_c fr">
+                <img src="{$yf_theme_path}public/images/erweima2.png" alt="川港燃气公众号">
+                <p>川港燃气公众号</p>
+            </div>
+            <div class="erwma t_c fr">
+                <img src="{$yf_theme_path}public/images/erweima3.png" alt="西南油气田微信">
+                <p>西南油气田微信</p>
+            </div>
+        </div>
+    </div>
+    <p style="color: #FFFFFF; text-align: center; line-height: 2;">版权信息{$footBottom.site_copyright} 地址{$footBottom.site_address}  电话{$footBottom.site_tel}</p>
+</div>

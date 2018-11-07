@@ -1,0 +1,20 @@
+<div class="warp head"><img src="{$yf_theme_path}public/images/head.jpg" alt=""></div>
+<!-- 导航 S -->
+<div class="warp ">
+    <div class="nav">
+        <ul class=" clearfix">
+            <li class="fl m">
+                <h3><a href="/">网站首页</a></h3>
+            </li>
+            {volist name="nav" id="vo" key="k"}
+            <li class="fl m {if $id == $vo['id']}on{/if}">
+                <h3><a href="{if $vo['menu_address']}{$vo.menu_address}{else /} {:url('index/lists',['id'=>$vo.id])} {/if}">{$vo.menu_name}</a></h3>
+            </li>
+            {/volist}
+        </ul>
+        <div class="fr" id="showtimes"></div>
+    </div>
+</div>
+<script type="text/javascript"> jQuery(".nav").slide({ type:"menu",  titCell:".m", targetCell:".sub", effect:"slideDown", delayTime:300, triggerTime:100,returnDefault:true  });</script>
+{include file="public:scripts"/}
+<!-- 导航 E -->
